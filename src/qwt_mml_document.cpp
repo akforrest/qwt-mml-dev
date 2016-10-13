@@ -137,10 +137,8 @@ public:
     QColor backgroundColor() const { return m_background_color; }
     void setBackgroundColor( const QColor &color ) { m_background_color = color; }
 
-#ifdef MML_TEST
     bool drawFrames() const { return m_draw_frames; }
     void setDrawFrames( const bool &drawFrames ) { m_draw_frames = drawFrames; }
-#endif
 
 private:
     void _dump( const QwtMmlNode *node, const QString &indent ) const;
@@ -168,9 +166,8 @@ private:
     qreal m_base_font_point_size;
     QColor m_foreground_color;
     QColor m_background_color;
-#ifdef MML_TEST
+
     bool m_draw_frames;
-#endif
 };
 
 class QwtMmlNode : public QwtMml
@@ -1206,9 +1203,7 @@ QwtMmlDocument::QwtMmlDocument()
     m_foreground_color = Qt::black;
     m_background_color = Qt::white;
 
-#ifdef MML_TEST
     m_draw_frames = false;
-#endif
 }
 
 QwtMmlDocument::~QwtMmlDocument()
@@ -2121,8 +2116,6 @@ void QwtMmlNode::paint(
 
 void QwtMmlNode::paintSymbol( QPainter *painter, qreal, qreal ) const
 {
-
-#ifdef MML_TEST
     QRectF d_rect = deviceRect();
     if ( m_document->drawFrames() && d_rect.isValid() )
     {
@@ -2143,9 +2136,6 @@ void QwtMmlNode::paintSymbol( QPainter *painter, qreal, qreal ) const
 
         painter->restore();
     }
-#else
-    Q_UNUSED( painter )
-#endif
 }
 
 void QwtMmlNode::stretch()
@@ -4489,7 +4479,6 @@ void QwtMathMLDocument::setBackgroundColor( const QColor &color )
     m_doc->setBackgroundColor( color );
 }
 
-#ifdef MML_TEST
 /*!
     Returns whether frames are to be drawn.
 */
@@ -4508,5 +4497,3 @@ void QwtMathMLDocument::setDrawFrames( bool drawFrames )
 
     m_doc->setDrawFrames( drawFrames );
 }
-
-#endif

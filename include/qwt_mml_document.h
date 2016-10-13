@@ -49,10 +49,8 @@ public:
     QColor backgroundColor() const;
     void setBackgroundColor( const QColor &color );
 
-#ifdef MML_TEST
     bool drawFrames() const;
     void setDrawFrames( bool );
-#endif
 
 private:
     QwtMmlDocument *m_doc;
