@@ -1,6 +1,6 @@
 #include "qwt_mml_entity_table.h"
 
-#include <qdebug.h>
+#include <QDebug>
 
 static const QwtMMLEntityTable::Spec mml_entity_data[] =
 {

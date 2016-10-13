@@ -1,9 +1,11 @@
 #include "formulaview.h"
 #include "qwt_mml_document.h"
 
-#include <qdebug.h>
-#include <qevent.h>
-#include <qpainter.h>
+#include <QEvent>
+#include <QPainter>
+#include <QPaintEvent>
+
+#include <QDebug>
 
 FormulaView::FormulaView( QWidget *parent ):
     QWidget( parent ),

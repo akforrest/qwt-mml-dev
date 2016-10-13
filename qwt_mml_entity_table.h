@@ -1,9 +1,11 @@
 #ifndef _QWT_MML_ENTITY_TABLE_H_
 #define _QWT_MML_ENTITY_TABLE_H_
 
-#include <qwt_global.h>
+#include <QtGlobal>
 
-#include <qstring.h>
+#include <QString>
+
+#include "qwt_mml_global.h"
 
 class QWT_EXPORT QwtMMLEntityTable
 {

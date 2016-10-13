@@ -1,15 +1,18 @@
 #ifndef _FORMULA_VIEW_H_
 #define _FORMULA_VIEW_H_
 
-#include <qwidget.h>
+#include <QWidget>
+
+#include "qwt_mml_global.h"
 
 class QPainter;
 
-class FormulaView: public QWidget
+class QWT_EXPORT FormulaView : public QWidget
 {
     Q_OBJECT
 
 public:
+
     FormulaView( QWidget *parent = NULL );
 
     QString formula() const;
