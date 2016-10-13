@@ -14,7 +14,7 @@ class QPointF;
 
 class QwtMmlDocument;
 
-class QWT_EXPORT QwtMathMLDocument
+class QTMML_EXPORT QwtMathMLDocument
 {
 public:
     enum MmlFont

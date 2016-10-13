@@ -13,15 +13,17 @@ OBJECTS_DIR  = obj
 
 DEFINES += QWT_MML_BUILD
 
-INCLUDEPATH += include/
+INCLUDEPATH += include
 
 HEADERS = \
-        include/qwt_mml_document.h \
-        include/qwt_mml_entity_table.h \
-        include/formulaview.h \
-        include/qwt_mml_global.h
+        include/qtmml/qwt_mml_document.h \
+        include/qtmml/qwt_mml_entity_table.h \
+        include/qtmml/formulaview.h \
+        include/qtmml/qwt_mml_global.h \
+    include/qtmml/formulaviewwidget.h
 
 SOURCES = \
         src/qwt_mml_document.cpp \
         src/qwt_mml_entity_table.cpp \
-        src/formulaview.cpp
+        src/formulaview.cpp \
+    include/qtmml/formulaviewwidget.cpp

@@ -1,14 +1,12 @@
-#include "formulaview.h"
-#include "qwt_mml_document.h"
+#include "qtmml/formulaview.h"
+#include "qtmml/qwt_mml_document.h"
 
-#include <QEvent>
 #include <QPainter>
-#include <QPaintEvent>
 
 #include <QDebug>
 
-FormulaView::FormulaView(QWidget * parent):
-    QWidget(parent),
+QtMml::FormulaView::FormulaView()
+    :
     d_fontSize(8),
     d_transformation(true),
     d_scale(false),
@@ -18,64 +16,47 @@ FormulaView::FormulaView(QWidget * parent):
 {
 }
 
-QString FormulaView::formula() const
+QString QtMml::FormulaView::formula() const
 {
     return d_formula;
 }
 
-void FormulaView::setFormula(const QString & formula)
+void QtMml::FormulaView::setFormula(const QString & formula)
 {
     d_formula = formula;
-    this->update();
 }
 
-void FormulaView::setFontSize(const qreal fontSize)
+void QtMml::FormulaView::setFontSize(const qreal fontSize)
 {
     d_fontSize = fontSize;
-    this->update();
 }
 
-void FormulaView::setTransformation(const bool transformation)
+void QtMml::FormulaView::setTransformation(const bool transformation)
 {
     d_transformation = transformation;
-    this->update();
 }
 
-void FormulaView::setScale(const bool scale)
+void QtMml::FormulaView::setScale(const bool scale)
 {
     d_scale = scale;
-    this->update();
 }
 
-void FormulaView::setRotation(const qreal rotation)
+void QtMml::FormulaView::setRotation(const qreal rotation)
 {
     d_rotation = rotation;
-    this->update();
 }
 
-void FormulaView::setDrawFrames(const bool drawFrames)
+void QtMml::FormulaView::setDrawFrames(const bool drawFrames)
 {
     d_drawFrames = drawFrames;
-    this->update();
 }
 
-void FormulaView::setColors(const bool colors)
+void QtMml::FormulaView::setColors(const bool colors)
 {
     d_colors = colors;
-    this->update();
 }
 
-void FormulaView::paintEvent(QPaintEvent * event)
-{
-    QPainter painter(this);
-    painter.setClipRegion(event->region());
-
-    painter.fillRect(event->rect(), Qt::white);
-
-    renderFormula(&painter);
-}
-
-void FormulaView::renderFormula(QPainter * painter) const
+void QtMml::FormulaView::renderFormula(QPainter * painter, const QPointF & center) const
 {
     QwtMathMLDocument doc;
     doc.setContent(d_formula);
@@ -96,7 +77,7 @@ void FormulaView::renderFormula(QPainter * painter) const
 
     QRectF docRect;
     docRect.setSize(doc.size());
-    docRect.moveCenter(rect().center());
+    docRect.moveCenter(center);
 
     if (d_transformation)
     {

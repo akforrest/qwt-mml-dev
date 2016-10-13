@@ -7,7 +7,7 @@
 
 #include "qwt_mml_global.h"
 
-class QWT_EXPORT QwtMMLEntityTable
+class QTMML_EXPORT QwtMMLEntityTable
 {
 public:
     struct Spec

@@ -1,4 +1,4 @@
-#include "qwt_mml_entity_table.h"
+#include "qtmml/qwt_mml_entity_table.h"
 
 #include <QDebug>
 

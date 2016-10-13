@@ -1,5 +1,5 @@
-#include "qwt_mml_document.h"
-#include "qwt_mml_entity_table.h"
+#include "qtmml/qwt_mml_document.h"
+#include "qtmml/qwt_mml_entity_table.h"
 
 #include <QApplication>
 #include <QDesktopwidget>
