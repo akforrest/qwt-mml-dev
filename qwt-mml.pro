@@ -16,12 +16,9 @@ OBJECTS_DIR  = obj
 HEADERS = \
 	qwt_mml_document.h \
 	qwt_mml_entity_table.h \
-	formulaview.h \
-	mainwindow.h
+	formulaview.h
 
 SOURCES = \
 	qwt_mml_document.cpp \
 	qwt_mml_entity_table.cpp \
-	formulaview.cpp \
-	mainwindow.cpp \
-	main.cpp
+	formulaview.cpp
