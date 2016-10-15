@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-#include "qwt_mml_global.h"
+#include "global.h"
 #include "formulaview.h"
 
 class QPainter;

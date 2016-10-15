@@ -1,7 +1,7 @@
 #ifndef _QTMML_FORMULA_VIEW_H_
 #define _QTMML_FORMULA_VIEW_H_
 
-#include "qwt_mml_global.h"
+#include "global.h"
 
 #include <QtGlobal>
 #include <QString>

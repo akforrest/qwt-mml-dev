@@ -7,7 +7,7 @@
 #include <QString>
 #include <QSize>
 
-#include "qwt_mml_global.h"
+#include "global.h"
 
 class QPainter;
 class QPointF;

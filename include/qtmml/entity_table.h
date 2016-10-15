@@ -5,7 +5,7 @@
 
 #include <QString>
 
-#include "qwt_mml_global.h"
+#include "global.h"
 
 class QTMML_EXPORT QwtMMLEntityTable
 {
