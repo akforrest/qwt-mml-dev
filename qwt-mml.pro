@@ -20,7 +20,8 @@ HEADERS = \
         include/qtmml/formulaviewwidget.h \
         include/qtmml/core/document.h \
         include/qtmml/core/entity_table.h \
-        include/qtmml/core/global.h
+        include/qtmml/core/global.h \
+    include/qtmml/core/types.h
 
 SOURCES = \
         src/formulaview.cpp \
