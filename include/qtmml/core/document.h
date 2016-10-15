@@ -38,58 +38,63 @@ public:
     QwtMmlDocument();
     ~QwtMmlDocument();
 
-    void clear();
+    void            clear();
 
-    bool setContent( const QString &text, QString *errorMsg = 0,
-                     int *errorLine = 0, int *errorColumn = 0 );
-    void paint( QPainter *painter, const QPointF &pos ) const;
-    void dump() const;
-    QSizeF size() const;
-    void layout();
+    bool            setContent(const QString & text,
+                               QString * errorMsg = 0,
+                               int * errorLine = 0,
+                               int * errorColumn = 0);
 
-    QString fontName( QwtMmlDocument::MmlFont type ) const;
-    void setFontName( QwtMmlDocument::MmlFont type, const QString &name );
+    void            paint(QPainter * painter, const QPointF & pos) const;
 
-    qreal baseFontPointSize() const;
-    void setBaseFontPointSize( qreal size );
+    void            debugPrint() const;
 
-    QColor foregroundColor() const;
-    void setForegroundColor( const QColor &color );
+    QSizeF          size() const;
 
-    QColor backgroundColor() const;
-    void setBackgroundColor( const QColor &color );
+    void            layout();
 
-    bool drawFrames() const;
-    void setDrawFrames( const bool &drawFrames );
+    QString         fontName(QwtMmlDocument::MmlFont type) const;
+    void            setFontName(QwtMmlDocument::MmlFont type, const QString & name);
+
+    qreal           baseFontPointSize() const;
+    void            setBaseFontPointSize(const qreal size);
+
+    QColor          foregroundColor() const;
+    void            setForegroundColor(const QColor & color);
+
+    QColor          backgroundColor() const;
+    void            setBackgroundColor(const QColor & color);
+
+    bool            drawFrames() const;
+    void            setDrawFrames(const bool drawFrames);
 
 private:
-    void _dump( const QwtMmlNode *node, const QString &indent ) const;
-    bool insertChild( QwtMmlNode *parent, QwtMmlNode *new_node,
-                      QString *errorMsg );
 
-    QwtMmlNode *domToMml( const QDomNode &dom_node, bool *ok,
-                          QString *errorMsg );
-    QwtMmlNode *createNode( QwtMml::NodeType type,
-                            const QwtMmlAttributeMap &mml_attr,
-                            const QString &mml_value, QString *errorMsg );
-    QwtMmlNode *createImplicitMrowNode( const QDomNode &dom_node, bool *ok,
-                                     QString *errorMsg );
+    void            _debugPrint(const QwtMmlNode * node, const QString & indent) const;
 
-    void insertOperator( QwtMmlNode *node, const QString &text );
+    bool            insertChild(QwtMmlNode * parent, QwtMmlNode * new_node, QString * errorMsg);
 
-    QwtMmlNode *m_root_node;
+    QwtMmlNode *    domToMml(const QDomNode & dom_node, bool * ok, QString * errorMsg);
+    QwtMmlNode *    createNode(QwtMml::NodeType type, const QwtMmlAttributeMap & mml_attr, const QString & mml_value, QString * errorMsg);
+    QwtMmlNode *    createImplicitMrowNode(const QDomNode & dom_node, bool * ok, QString * errorMsg);
 
-    QString m_normal_font_name;
-    QString m_fraktur_font_name;
-    QString m_sans_serif_font_name;
-    QString m_script_font_name;
-    QString m_monospace_font_name;
-    QString m_doublestruck_font_name;
-    qreal m_base_font_point_size;
-    QColor m_foreground_color;
-    QColor m_background_color;
+    void            insertOperator(QwtMmlNode * node, const QString & text);
 
-    bool m_draw_frames;
+    QwtMmlNode *    m_root_node;
+
+    QString         m_normal_font_name;
+    QString         m_fraktur_font_name;
+    QString         m_sans_serif_font_name;
+    QString         m_script_font_name;
+    QString         m_monospace_font_name;
+    QString         m_doublestruck_font_name;
+
+    qreal           m_base_font_point_size;
+
+    QColor          m_foreground_color;
+    QColor          m_background_color;
+
+    bool            m_draw_frames;
 };
 
 #endif

@@ -1022,8 +1022,6 @@ void QwtMmlDocument::setFontName( QwtMmlDocument::MmlFont type,
     }
 }
 
-qreal QwtMmlDocument::baseFontPointSize() const { return m_base_font_point_size; }
-
 QwtMml::NodeType domToQwtMmlNodeType( const QDomNode &dom_node )
 {
     QwtMml::NodeType mml_type = QwtMml::NoNode;
@@ -1127,17 +1125,16 @@ void QwtMmlDocument::clear()
     m_root_node = 0;
 }
 
-void QwtMmlDocument::dump() const
+void QwtMmlDocument::debugPrint() const
 {
     if ( m_root_node == 0 )
         return;
 
     QString indent;
-    _dump( m_root_node, indent );
+    _debugPrint( m_root_node, indent );
 }
 
-void QwtMmlDocument::_dump(
-    const QwtMmlNode *node, const QString &indent ) const
+void QwtMmlDocument::_debugPrint(const QwtMmlNode * node, const QString & indent) const
 {
     if ( node == 0 ) return;
 
@@ -1145,7 +1142,7 @@ void QwtMmlDocument::_dump(
 
     const QwtMmlNode *child = node->firstChild();
     for ( ; child != 0; child = child->nextSibling() )
-        _dump( child, indent + "  " );
+        _debugPrint( child, indent + "  " );
 }
 
 bool QwtMmlDocument::setContent(
@@ -4233,36 +4230,49 @@ static QFont mmlInterpretMathSize( const QString &value, QFont &fn, qreal em, qr
     return fn;
 }
 
-
-
-
-/*!
-    Sets the point \a size of the font used to render expressions
-    which scriptlevel is 0.
-
-    \sa baseFontPointSize() fontName() setFontName()
-*/
-void QwtMmlDocument::setBaseFontPointSize( qreal size )
+qreal QwtMmlDocument::baseFontPointSize() const
 {
-    if ( size < g_min_font_point_size )
-        size = g_min_font_point_size;
-
-    if ( size == this->baseFontPointSize() )
-        return;
-
-    m_base_font_point_size = size;
-    this->layout();
+    return m_base_font_point_size;
 }
 
-QColor QwtMmlDocument::foregroundColor() const { return m_foreground_color; }
+void QwtMmlDocument::setBaseFontPointSize(const qreal size)
+{
+    qreal adjustedSize = qMax(size, g_min_font_point_size);
 
-void QwtMmlDocument::setForegroundColor(const QColor & color) { m_foreground_color = color; }
+    if (adjustedSize != m_base_font_point_size)
+    {
+        m_base_font_point_size = adjustedSize;
+        this->layout();
+    }
+}
 
-QColor QwtMmlDocument::backgroundColor() const { return m_background_color; }
+QColor QwtMmlDocument::foregroundColor() const
+{
+    return m_foreground_color;
+}
 
-void QwtMmlDocument::setBackgroundColor(const QColor & color) { m_background_color = color; }
+void QwtMmlDocument::setForegroundColor(const QColor & color)
+{
+    m_foreground_color = color;
+}
 
-bool QwtMmlDocument::drawFrames() const { return m_draw_frames; }
+QColor QwtMmlDocument::backgroundColor() const
+{
+    return m_background_color;
+}
 
-void QwtMmlDocument::setDrawFrames(const bool & drawFrames) { m_draw_frames = drawFrames; }
+void QwtMmlDocument::setBackgroundColor(const QColor & color)
+{
+    m_background_color = color;
+}
+
+bool QwtMmlDocument::drawFrames() const
+{
+    return m_draw_frames;
+}
+
+void QwtMmlDocument::setDrawFrames(const bool drawFrames)
+{
+    m_draw_frames = drawFrames;
+}
 
