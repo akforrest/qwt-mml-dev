@@ -1,5 +1,7 @@
-#include "qtmml/document.h"
-#include "qtmml/entity_table.h"
+
+#include "qtmml/core/document.h"
+
+#include "qtmml/core/entity_table.h"
 
 #include <QApplication>
 #include <QDesktopwidget>

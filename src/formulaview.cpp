@@ -1,5 +1,7 @@
+
 #include "qtmml/formulaview.h"
-#include "qtmml/document.h"
+
+#include "qtmml/core/document.h"
 
 #include <QPainter>
 

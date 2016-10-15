@@ -17,13 +17,13 @@ INCLUDEPATH += include
 
 HEADERS = \
         include/qtmml/formulaview.h \
-    include/qtmml/formulaviewwidget.h \
-    include/qtmml/document.h \
-    include/qtmml/entity_table.h \
-    include/qtmml/global.h
+        include/qtmml/formulaviewwidget.h \
+        include/qtmml/core/document.h \
+        include/qtmml/core/entity_table.h \
+        include/qtmml/core/global.h
 
 SOURCES = \
         src/formulaview.cpp \
-    include/qtmml/formulaviewwidget.cpp \
-    src/document.cpp \
-    src/entity_table.cpp
+        src/formulaviewwidget.cpp \
+        src/core/document.cpp \
+        src/core/entity_table.cpp

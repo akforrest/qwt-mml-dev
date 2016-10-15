@@ -1,4 +1,5 @@
-#include "formulaviewwidget.h"
+
+#include "qtmml/formulaviewwidget.h"
 
 #include <QEvent>
 #include <QPainter>

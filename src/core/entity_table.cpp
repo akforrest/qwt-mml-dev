@@ -1,4 +1,5 @@
-#include "qtmml/entity_table.h"
+
+#include "qtmml/core/entity_table.h"
 
 #include <QDebug>
 
