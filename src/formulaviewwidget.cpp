@@ -16,7 +16,7 @@ void QtMml::FormulaViewWidget::paintEvent(QPaintEvent * event)
     QPainter painter(this);
     painter.setClipRegion(event->region());
 
-    painter.fillRect(event->rect(), Qt::white);
+    painter.fillRect(event->rect(), this->backgroundColor());
 
     renderFormula(&painter, rect().center());
 }

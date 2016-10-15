@@ -1,8 +1,6 @@
 
 #include "qtmml/formulaview.h"
 
-#include "qtmml/core/document.h"
-
 #include <QPainter>
 
 #include <QDebug>
@@ -16,6 +14,8 @@ QtMml::FormulaView::FormulaView()
     d_drawFrames(false),
     d_colors(false)
 {
+    m_doc.setBackgroundColor(Qt::transparent);
+    m_doc.setForegroundColor(Qt::black);
 }
 
 QString QtMml::FormulaView::formula() const
@@ -26,11 +26,13 @@ QString QtMml::FormulaView::formula() const
 void QtMml::FormulaView::setFormula(const QString & formula)
 {
     d_formula = formula;
+    m_doc.setContent(d_formula);
 }
 
 void QtMml::FormulaView::setFontSize(const qreal fontSize)
 {
     d_fontSize = fontSize;
+    m_doc.setBaseFontPointSize(d_fontSize);
 }
 
 void QtMml::FormulaView::setTransformation(const bool transformation)
@@ -51,34 +53,33 @@ void QtMml::FormulaView::setRotation(const qreal rotation)
 void QtMml::FormulaView::setDrawFrames(const bool drawFrames)
 {
     d_drawFrames = drawFrames;
+    m_doc.setDrawFrames(d_drawFrames);
 }
 
-void QtMml::FormulaView::setColors(const bool colors)
+QColor QtMml::FormulaView::foregroundColor() const
 {
-    d_colors = colors;
+    return m_doc.foregroundColor();
+}
+
+void QtMml::FormulaView::setForegroundColor(const QColor & color)
+{
+    m_doc.setForegroundColor(color);
+}
+
+QColor QtMml::FormulaView::backgroundColor() const
+{
+    return m_doc.backgroundColor();
+}
+
+void QtMml::FormulaView::setBackgroundColor(const QColor & color)
+{
+    m_doc.setBackgroundColor(color);
 }
 
 void QtMml::FormulaView::renderFormula(QPainter * painter, const QPointF & center) const
 {
-    QwtMathMLDocument doc;
-    doc.setContent(d_formula);
-    if (d_colors)
-    {
-        doc.setBackgroundColor(Qt::darkCyan);
-        doc.setForegroundColor(Qt::yellow);
-    }
-    else
-    {
-        doc.setBackgroundColor(Qt::white);
-        doc.setForegroundColor(Qt::black);
-    }
-
-    doc.setBaseFontPointSize(d_fontSize);
-
-    doc.setDrawFrames(d_drawFrames);
-
     QRectF docRect;
-    docRect.setSize(doc.size());
+    docRect.setSize(m_doc.size());
     docRect.moveCenter(center);
 
     if (d_transformation)
@@ -91,12 +92,12 @@ void QtMml::FormulaView::renderFormula(QPainter * painter, const QPointF & cente
         painter->rotate(d_rotation);
         painter->scale(scaleF, scaleF);
         painter->translate(docRect.topLeft() - docRect.center());
-        doc.paint(painter, QPointF(0.0, 0.0));
+        m_doc.paint(painter, QPointF(0.0, 0.0));
 
         painter->restore();
     }
     else
     {
-        doc.paint(painter, docRect.topLeft());
+        m_doc.paint(painter, docRect.topLeft());
     }
 }
