@@ -1,6 +1,9 @@
 #ifndef _QTMML_TYPES_H
 #define _QTMML_TYPES_H
 
+#include <QMap>
+#include <QString>
+
 namespace QwtMml
 {
     enum NodeType
@@ -39,5 +42,7 @@ namespace QwtMml
         qreal m_hor, m_ver;
     };
 }
+
+typedef QMap<QString, QString> QwtMmlAttributeMap;
 
 #endif // _QTMML_TYPES_H

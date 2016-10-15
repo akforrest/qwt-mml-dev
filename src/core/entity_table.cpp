@@ -2010,7 +2010,7 @@ static QString mmlDecodeEntityValue( QString literal )
     return result;
 }
 
-QString QwtMMLEntityTable::entities() const
+QString QwtMMLEntityTable::entities()
 {
     QString result = "<!DOCTYPE math [\n";
 
@@ -2025,8 +2025,7 @@ QString QwtMMLEntityTable::entities() const
     return result;
 }
 
-const QwtMMLEntityTable::Spec *QwtMMLEntityTable::search(
-    const QString &value, const QwtMMLEntityTable::Spec *from ) const
+const QwtMMLEntityTable::Spec *QwtMMLEntityTable::search(const QString &value, const QwtMMLEntityTable::Spec * from)
 {
     const QwtMMLEntityTable::Spec *entity = from;
     if ( entity == 0 )

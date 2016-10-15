@@ -16,8 +16,6 @@ class QPainter;
 class QPointF;
 class QDomNode;
 
-typedef QMap<QString, QString> QwtMmlAttributeMap;
-
 class QwtMmlDocument;
 
 class QwtMmlNode;

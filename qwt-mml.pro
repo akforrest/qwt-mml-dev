@@ -21,10 +21,12 @@ HEADERS = \
         include/qtmml/core/document.h \
         include/qtmml/core/entity_table.h \
         include/qtmml/core/global.h \
-    include/qtmml/core/types.h
+    include/qtmml/core/types.h \
+    include/qtmml/core/node.h
 
 SOURCES = \
         src/formulaview.cpp \
         src/formulaviewwidget.cpp \
         src/core/document.cpp \
-        src/core/entity_table.cpp
+        src/core/entity_table.cpp \
+    src/core/node.cpp
