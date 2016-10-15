@@ -50,7 +50,7 @@ namespace QtMml
             bool        d_drawFrames;
             bool        d_colors;
 
-            QwtMathMLDocument m_doc;
+            QwtMmlDocument m_doc;
     };
 }
 
